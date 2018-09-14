@@ -1,0 +1,58 @@
+{
+  "name": "checkout-offers",
+  "version": "1.0.0",
+  "description": "The goal is to code a supermarket POS checkout that handles different pricing schemes.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "ramda": "^0.25.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.6.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true
+    },
+    "plugins": [
+      "fp"
+    ],
+    "rules": {
+      "fp/no-arguments": "error",
+      "fp/no-class": "error",
+      "fp/no-delete": "error",
+      "fp/no-events": "error",
+      "fp/no-get-set": "error",
+      "fp/no-let": "error",
+      "fp/no-loops": "error",
+      "fp/no-mutating-assign": "error",
+      "fp/no-mutating-methods": "error",
+      "fp/no-mutation": [
+        "error",
+        {
+          "commonjs": true
+        }
+      ],
+      "fp/no-nil": "error",
+      "fp/no-proxy": "error",
+      "fp/no-rest-parameters": "error",
+      "fp/no-this": "error",
+      "fp/no-throw": "error",
+      "fp/no-unused-expression": "error",
+      "fp/no-valueof-field": "error",
+      "no-var": "error"
+    }
+  },
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "author": "",
+  "license": "ISC"
+}
