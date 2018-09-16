@@ -6,8 +6,8 @@ const rules = {
 };
 
 function findDiscount(quantity, item) {
-  const matchQuantity = rule => R.find(R.propEq('quantity', quantity))(rule);
-  const pullDiscountAmount = matchedRule => R.path(['discountAmount'], matchedRule) || 0;
+  const matchQuantity = rule => R.filter(R.where({ quantity: R.gte(quantity) }))(rule);
+  const pullDiscountAmount = matchedRule => (Math.ceil(R.divide(R.pluck(['quantity'], matchedRule), quantity))) * R.pluck(['discountAmount'], matchedRule);
 
   const findRuleDiscountValue = R.compose(pullDiscountAmount, matchQuantity, R.props);
   return findRuleDiscountValue(item, rules);
