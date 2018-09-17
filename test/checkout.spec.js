@@ -44,4 +44,12 @@ describe('scan', () => {
   it ('should return 175 given AAABB', () => {
     expect(checkout.scan(['A', 'A', 'A', 'B', 'B'])).toBe(175);
   });
+
+  it ('should return 190 given AAABBD', () => {
+    expect(checkout.scan(['A', 'A', 'A', 'B', 'B', 'D'])).toBe(190);
+  });
+
+  it ('should return 190 given DABABA', () => {
+    expect(checkout.scan(['D', 'A', 'B', 'A', 'B', 'A'])).toBe(190);
+  });
 });
