@@ -5,9 +5,8 @@ const discounts = require('./discounts');
 const checkout = {
   scan: (items = ['NA']) => {
     const calculateTotal = R.compose(R.sum, R.values, R.props);
-    const total = calculateTotal(items, prices);
-    const discountsForItems = discounts.getDiscountValue(items);
-    const totalWithDiscount = R.subtract(total, discountsForItems);
+    const discountValue = discounts.getDiscountValue(items);
+    const totalWithDiscount = R.subtract(calculateTotal(items, prices), discountValue);
     return totalWithDiscount;
   },
 };
