@@ -20,14 +20,11 @@ function findDiscount(quantity, item) {
   return findRuleDiscountValue(item, rules);
 }
 
-const getAllApplicableDiscounts = itemsWithDiscounts => (R.isEmpty(itemsWithDiscounts)
-  ? { NONE: 0 }
-  : R.mapObjIndexed(findDiscount, itemsWithDiscounts));
-
 const discounts = {
-  findDiscountsForItems: (items) => {
+  getDiscountValue: (items) => {
     const itemsWithDiscounts = R.pick(R.keys(rules), R.countBy(R.toUpper)(items));
-    return getAllApplicableDiscounts(itemsWithDiscounts);
+    const calcDiscountValue = R.compose(R.sum, R.values, R.mapObjIndexed(findDiscount));
+    return calcDiscountValue(itemsWithDiscounts);
   },
 };
 

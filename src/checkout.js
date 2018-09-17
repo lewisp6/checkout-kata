@@ -6,8 +6,8 @@ const checkout = {
   scan: (items = ['NA']) => {
     const calculateTotal = R.compose(R.sum, R.values, R.props);
     const total = calculateTotal(items, prices);
-    const discountsForItems = discounts.findDiscountsForItems(items);
-    const totalWithDiscount = R.subtract(total, R.sum(R.values(discountsForItems)));
+    const discountsForItems = discounts.getDiscountValue(items);
+    const totalWithDiscount = R.subtract(total, discountsForItems);
     return totalWithDiscount;
   },
 };
