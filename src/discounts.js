@@ -5,9 +5,16 @@ const rules = {
   B: { discountAmount: 20, quantity: 3 },
 };
 
+function calculateDiscountAmount(rule, quantity) {
+  const amount = R.pluck(['discountAmount'], rule);
+  const ruleQuantity = R.pluck(['quantity'], rule);
+  const calculateDiscount = (Math.floor(R.divide(quantity, ruleQuantity))) * amount;
+  return R.isEmpty(ruleQuantity) ? 0 : calculateDiscount;
+}
+
 function findDiscount(quantity, item) {
   const matchQuantity = rule => R.filter(R.where({ quantity: R.gte(quantity) }))(rule);
-  const pullDiscountAmount = matchedRule => (Math.ceil(R.divide(R.pluck(['quantity'], matchedRule), quantity))) * R.pluck(['discountAmount'], matchedRule);
+  const pullDiscountAmount = matchedRule => calculateDiscountAmount(matchedRule, quantity);
 
   const findRuleDiscountValue = R.compose(pullDiscountAmount, matchQuantity, R.props);
   return findRuleDiscountValue(item, rules);

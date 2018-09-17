@@ -28,4 +28,12 @@ describe('scan', () => {
   it('should return 180 given AAAA', () => {
     expect(checkout.scan(['A', 'A', 'A', 'A'])).toBe(180);
   });
+
+  it('should return 230 given AAAAA', () => {
+    expect(checkout.scan(['A', 'A', 'A', 'A', 'A'])).toBe(230);
+  });
+
+  it('should return 230 given AAAAAA', () => {
+    expect(checkout.scan(['A', 'A', 'A', 'A', 'A', 'A'])).toBe(260);
+  });
 });
