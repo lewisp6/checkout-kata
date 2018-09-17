@@ -2,7 +2,7 @@ const R = require('ramda');
 
 const rules = {
   A: { discountAmount: 20, quantity: 3 },
-  B: { discountAmount: 20, quantity: 3 },
+  B: { discountAmount: 15, quantity: 2 },
 };
 
 function calculateDiscountAmount(rule, quantity) {

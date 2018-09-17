@@ -36,4 +36,12 @@ describe('scan', () => {
   it('should return 230 given AAAAAA', () => {
     expect(checkout.scan(['A', 'A', 'A', 'A', 'A', 'A'])).toBe(260);
   });
+
+  it('should return 160 given AAAB', () => {
+    expect(checkout.scan(['A', 'A', 'A', 'B'])).toBe(160);
+  });
+
+  it ('should return 175 given AAABB', () => {
+    expect(checkout.scan(['A', 'A', 'A', 'B', 'B'])).toBe(175);
+  });
 });

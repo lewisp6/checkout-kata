@@ -7,8 +7,8 @@ const checkout = {
     const calculateTotal = R.compose(R.sum, R.values, R.props);
     const total = calculateTotal(items, prices);
     const discountsForItems = discounts.findDiscountsForItems(items);
-    const totalWithDiscount = R.ap([R.subtract(total)], R.values(discountsForItems));
-    return R.head(totalWithDiscount);
+    const totalWithDiscount = R.subtract(total, R.sum(R.values(discountsForItems)));
+    return totalWithDiscount;
   },
 };
 
